@@ -24,7 +24,7 @@ const Cart = () => {
             </div>
             <div className="details">
               <p>{title}</p>
-              <p>$ {price}</p>
+              <p>Ksh. {price}</p>
             </div>
             <div className="amount">
               <button onClick={() => increaseAmount(id)}><FiChevronUp /></button>
@@ -35,7 +35,7 @@ const Cart = () => {
         ))}
       </div>
       <div>
-        <h3>Total: $ {total}</h3>
+        <h3>Total: Ksh. {total}</h3>
       </div>
       <div>
         <button className="btn" onClick={() => history.push("/checkout")}>Checkout</button>

@@ -11,16 +11,16 @@ const {
 } = config
 
 
-const Admin = () => {
+const Seller = () => {
     const [image, setImage] = useState(null);
-    const [bookDetails, setBookDetails] = useState({ title: "", description: "", image: "", author: "", price: "" });
+    const [plasticDetails, setPlasticDetails] = useState({ title: "", description: "", image: "", price: "" });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            if (!bookDetails.title || !bookDetails.price) return
-            await API.graphql(graphqlOperation(createBook, { input: bookDetails }))
-            setBookDetails({ title: "", description: "", image: "", author: "", price: "" })
+            if (!plasticDetails.title || !plasticDetails.price) return
+            await API.graphql(graphqlOperation(createBook, { input: plasticDetails }))
+            setPlasticDetails({ title: "", description: "", image: "", price: "" })
         } catch (err) {
             console.log('error creating todo:', err)
         }
@@ -42,7 +42,7 @@ const Admin = () => {
             // Retrieve the uploaded file to display
             const image = await Storage.get(key, { level: 'public' })
             setImage(image);
-            setBookDetails({ ...bookDetails, image: url });
+            setPlasticDetails({ ...plasticDetails, image: url });
         } catch (err) {
             console.log(err);
         }
@@ -53,7 +53,7 @@ const Admin = () => {
             <AmplifyAuthenticator>
                 <section>
                     <header className="form-header">
-                        <h3>Add New Book</h3>
+                        <h3>Add New Plastic</h3>
                         <AmplifySignOut></AmplifySignOut>
                     </header>
                     <form className="form-wrapper" onSubmit={handleSubmit}>
@@ -71,7 +71,7 @@ const Admin = () => {
                                     name="email"
                                     type="title"
                                     placeholder="Type the title"
-                                    onChange={(e) => setBookDetails({ ...bookDetails, title: e.target.value })}
+                                    onChange={(e) => setPlasticDetails({ ...plasticDetails, title: e.target.value })}
                                     required
                                 /></p>
                             </div>
@@ -81,28 +81,19 @@ const Admin = () => {
                                     name="description"
                                     type="text"
                                     rows="8"
-                                    placeholder="Type the description of the book"
-                                    onChange={(e) => setBookDetails({ ...bookDetails, description: e.target.value })}
+                                    placeholder="Type the description of the plastic"
+                                    onChange={(e) => setPlasticDetails({ ...plasticDetails, description: e.target.value })}
                                     required
                                 /></p>
                             </div>
-                            <div className="author-form">
-                                <p><label htmlFor="author">Author</label></p>
-                                <p><input
-                                    name="author"
-                                    type="text"
-                                    placeholder="Type the author's name"
-                                    onChange={(e) => setBookDetails({ ...bookDetails, author: e.target.value })}
-                                    required
-                                /></p>
-                            </div>
+            
                             <div className="price-form">
-                                <p><label htmlFor="price">Price ($)</label>
+                                <p><label htmlFor="price">Price (Ksh.)</label>
                                     <input
                                         name="price"
                                         type="text"
-                                        placeholder="What is the Price of the book (USD)"
-                                        onChange={(e) => setBookDetails({ ...bookDetails, price: e.target.value })}
+                                        placeholder="What is the Price of the plastic (KSH)"
+                                        onChange={(e) => setPlasticDetails({ ...plasticDetails, price: e.target.value })}
                                         required
                                     /></p>
                             </div>
@@ -110,8 +101,8 @@ const Admin = () => {
                                 <p><label>Featured?</label>
                                     <input type="checkbox"
                                         className="featured-checkbox"
-                                        checked={bookDetails.featured}
-                                        onChange={() => setBookDetails({ ...bookDetails, featured: !bookDetails.featured })}
+                                        checked={plasticDetails.featured}
+                                        onChange={() => setPlasticDetails({ ...plasticDetails, featured: !plasticDetails.featured })}
                                     />
                                 </p>
                             </div>
@@ -126,4 +117,4 @@ const Admin = () => {
     )
 }
 
-export default Admin
+export default Seller

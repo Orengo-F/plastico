@@ -1,22 +1,22 @@
 import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { BookContext } from "../context/books";
+import { PlasticContext } from "../context/plastics";
 import { CartContext } from "../context/cart";
 
-const BookDetails = () => {
+const PlasticDetails = () => {
   const { id } = useParams();
   const history = useHistory();
-  const { books } = useContext(BookContext);
+  const { plastics } = useContext(PlasticContext);
   const { addToCart } = useContext(CartContext);
 
-  const book = books.find((book) => {
-    return book.id === id;
+  const plastic = plastics.find((plastic) => {
+    return plastic.id === id;
   });
-  if (!book) {
+  if (!plastic) {
     return <h3>Loading...</h3>;
   }
 
-  const { image: url, title, description, author, price } = book;
+  const { image: url, title, description, price } = plastic;
 
   return (
     <section className="book-details">
@@ -26,12 +26,11 @@ const BookDetails = () => {
       <div className="detail-description">
         <h2>{title}</h2>
         <p>{description}</p>
-        <h3>{author}</h3>
         <h4>Price - $ {price}</h4>
         <button
           className="btn"
           onClick={() => {
-            addToCart({ ...book, id });
+            addToCart({ ...plastic, id });
             history.push("/cart");
           }}
         >
@@ -42,4 +41,4 @@ const BookDetails = () => {
   );
 };
 
-export default BookDetails;
+export default PlasticDetails;

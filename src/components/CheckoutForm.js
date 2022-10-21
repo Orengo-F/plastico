@@ -1,34 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { BookContext } from "../context/books";
+import { PlasticContext } from "../context/plastics";
 import { CartContext } from "../context/cart";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-
-const CARD_ELEMENT_OPTIONS = {
-  style: {
-    base: {
-      color: "#32325d",
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-      fontSmoothing: "antialiased",
-      fontSize: "16px",
-      "::placeholder": {
-        color: "#aab7c4"
-      }
-    },
-    invalid: {
-      color: "#fa755a",
-      iconColor: "#fa755a"
-    }
-  }
-};
 
 const CheckoutForm = () => {
   const { cart, total, clearCart } = useContext(CartContext);
-  const { checkout } = useContext(BookContext);
+  const { checkout } = useContext(PlasticContext);
   const [orderDetails, setOrderDetails] = useState({ cart, total, address: null, token: null });
   const [error, setError] = useState(null);
-  const stripe = useStripe();
-  const elements = useElements();
   const history = useHistory();
 
   useEffect(() => {
@@ -51,17 +30,7 @@ const CheckoutForm = () => {
   // Handle form submission.
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const card = elements.getElement(CardElement);
-    const result = await stripe.createToken(card);
-    if (result.error) {
-      // Inform the user if there was an error.
-      setError(result.error.message);
-    } else {
-      setError(null);
-      // Send the token to your server.
-      const token = result.token;
-      setOrderDetails({ ...orderDetails, token: token.id });
-    }
+    setOrderDetails({ ...orderDetails });
   };
 
   return (
@@ -73,16 +42,12 @@ const CheckoutForm = () => {
           type="text"
           onChange={(e) => setOrderDetails({ ...orderDetails, address: e.target.value })}
         />
-        <div className="stripe-section">
-          <label htmlFor="stripe-element"> Credit or debit card </label>
-          <CardElement id="stripe-element" options={CARD_ELEMENT_OPTIONS} onChange={handleChange} />
-        </div>
         <div className="card-errors" role="alert">
           {error}
         </div>
       </div>
       <button type="submit" className="btn">
-        Submit Payment
+        Submit Order
       </button>
     </form>
   );

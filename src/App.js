@@ -6,11 +6,11 @@ import Amplify from "aws-amplify";
 // Pages
 import Home from "./pages/Home"
 import Error from "./pages/Error";
-import Books from "./pages/Books";
+import Books from "./pages/Plastics";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
-import BookDetails from "./pages/BookDetails";
-import Admin from './pages/Admin';
+import BookDetails from "./pages/PlasticDetails";
+import Admin from './pages/Seller';
 
 // Components
 import Header from "./components/Header"

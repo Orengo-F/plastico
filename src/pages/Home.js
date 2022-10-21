@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
 
-import { BookContext } from "../context/books";
+import { PlasticContext } from "../context/plastics";
 
 const Home = () => {
-    const { featured } = useContext(BookContext);
+    const { featured } = useContext(PlasticContext);
     if (!featured.length) {
-        return <h3>No Featured Books</h3>
+        return <h3>No Featured Plastics</h3>
     }
     return (
         <>

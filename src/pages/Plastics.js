@@ -1,18 +1,18 @@
 import React, { useContext } from 'react'
 import { Link } from "react-router-dom";
-import { BookContext } from '../context/books';
+import { PlasticContext } from '../context/plastics';
 
 
-const Books = () => {
-    const { books } = useContext(BookContext);
+const Plastics = () => {
+    const { plastics } = useContext(PlasticContext);
 
-    if (!books.length) {
-        return <h3>No Books Available</h3>
+    if (!plastics.length) {
+        return <h3>No Plastics Available</h3>
     }
 
     return (
         <section className="books">
-            {books.map(({ image: image, id, title }) => (
+            {plastics.map(({ image: image, id, title }) => (
                 <article key={id} className="book">
                     <div className="book-image">
                         <img src={image} alt={title} />
@@ -24,4 +24,4 @@ const Books = () => {
     )
 }
 
-export default Books
+export default Plastics
