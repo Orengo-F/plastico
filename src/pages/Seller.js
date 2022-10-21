@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import { API, graphqlOperation, Storage } from "aws-amplify";
-import { AmplifyAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+import { Authenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import { createBook } from '../api/mutations'
 import config from '../aws-exports'
 
@@ -50,11 +50,12 @@ const Seller = () => {
 
     return (
         <section className="admin-wrapper">
-            <AmplifyAuthenticator>
+            <Authenticator>
+            {({ signOut, user }) => (
                 <section>
                     <header className="form-header">
                         <h3>Add New Plastic</h3>
-                        <AmplifySignOut></AmplifySignOut>
+                        
                     </header>
                     <form className="form-wrapper" onSubmit={handleSubmit}>
                         <div className="form-image">
@@ -112,7 +113,8 @@ const Seller = () => {
                         </div>
                     </form>
                 </section>
-            </AmplifyAuthenticator>
+            )}
+            </Authenticator>
         </section>
     )
 }

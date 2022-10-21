@@ -1,0 +1,36 @@
+{
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-plastico-prod-212145-authRole",
+      "UnauthRoleArn": "arn:aws:iam::070767776776:role/amplify-plastico-prod-212145-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::070767776776:role/amplify-plastico-prod-212145-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-plastico-prod-212145-deployment",
+      "UnauthRoleName": "amplify-plastico-prod-212145-unauthRole",
+      "StackName": "amplify-plastico-prod-212145",
+      "StackId": "arn:aws:cloudformation:us-east-1:070767776776:stack/amplify-plastico-prod-212145/3cbd56c0-516d-11ed-9b98-0aaad94b78dd",
+      "AmplifyAppId": "d1u37gq7t4fxz5"
+    },
+    "categories": {
+      "auth": {
+        "plastico032a53b5": {}
+      },
+      "function": {
+        "processPayment": {
+          "deploymentBucketName": "amplify-plastico-prod-212145-deployment",
+          "s3Key": "amplify-builds/processPayment-4474487745676d505737-build.zip"
+        },
+        "createOrder": {
+          "deploymentBucketName": "amplify-plastico-prod-212145-deployment",
+          "s3Key": "amplify-builds/createOrder-754a6e5a4735566c3045-build.zip"
+        }
+      },
+      "storage": {
+        "plasticWasteImage": {}
+      },
+      "api": {
+        "plastico": {}
+      }
+    }
+  }
+}

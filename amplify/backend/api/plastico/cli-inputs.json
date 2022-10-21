@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "plastico",
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authplastico032a53b5"
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 365,
+        "apiKeyExpirationDate": "2023-10-21T18:38:47.488Z",
+        "keyDescription": "Guest user access to plastics"
+      }
+    ]
+  }
+}

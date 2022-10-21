@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "plastico",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authplastico032a53b5",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "resourceName": "plasticWasteImage",
+  "policyUUID": "3855a2ca",
+  "bucketName": "plasticoebff2d7f699d4572a37f664c0688a62d",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

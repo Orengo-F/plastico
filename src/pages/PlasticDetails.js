@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { PlasticContext } from "../context/plastics";
 import { CartContext } from "../context/cart";
 
 const PlasticDetails = () => {
   const { id } = useParams();
-  const history = useHistory();
+  const history = useNavigate();
   const { plastics } = useContext(PlasticContext);
   const { addToCart } = useContext(CartContext);
 

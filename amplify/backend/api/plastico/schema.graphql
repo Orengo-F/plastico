@@ -1,0 +1,80 @@
+type Plastic
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # allow sellers to create, update and delete plastics
+      { allow: groups, groups: ["Seller"] }
+      # allow all authenticated users to view plastics
+      { allow: private, operations: [read] }
+      # allow all guest users (not authenticated) to view books
+      { allow: public, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  title: String!
+  description: String
+  image: String
+  featured: Boolean
+  price: Float
+  orders: [PlasticOrder] @hasMany(indexName: "byPlastic", fields: ["id"])
+}
+
+type PlasticOrder
+  @model(queries: null, subscriptions: null)
+  @auth(
+    rules: [
+      # allow sellers to create plasticorders for customers by using customer email in lambda
+      { allow: owner, identityClaim: "email", ownerField: "customer" }
+      { allow: groups, groups: ["Seller"] }
+    ]
+  ) {
+  id: ID!
+  plastic_id: ID! @index(name: "byPlastic", sortKeyFields: ["order_id"])
+  order_id: ID!   @index(name: "byOrder", sortKeyFields: ["plastic_id"])
+  plastic: Plastic @hasOne(fields: ["plastic_id"])
+  order: Order @hasOne(fields: ["order_id"])
+}
+
+type Order
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # only owner can see his orders
+      { allow: owner, identityClaim: "email", ownerField: "customer" }
+      # allow sellers to view orders
+      { allow: groups, groups: ["Seller"] }
+    ]
+  )
+   {
+  id: ID! @index(name: "byUser", sortKeyFields: ["user"])
+  user: String!
+  date: String
+  total: Float
+  plastics: [PlasticOrder] @hasMany(indexName: "byOrder", fields: ["id"])
+}
+
+enum OrderStatus {
+  SUCCESS
+  FAILED
+}
+
+input CartItem {
+  id: ID!
+  title: String
+  image: String
+  price: Float
+  amount: Int
+}
+
+input ProcessOrderInput {
+  id: ID!
+  cart: [CartItem]
+  total: Float!
+  address: String
+}
+
+type Mutation {
+  processOrder(input: ProcessOrderInput!): OrderStatus
+    @function(name: "processPayment-${env}")
+    @function(name: "createOrder-${env}")
+}

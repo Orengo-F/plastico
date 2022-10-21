@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { CartContext } from "../context/cart";
 import { FiChevronUp } from "react-icons/fi";
 import { FiChevronDown } from "react-icons/fi";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const history = useHistory();
+  const history = useNavigate();
   const { cart, total, increaseAmount, decreaseAmount } = useContext(CartContext);
 
   if (!cart.length) {

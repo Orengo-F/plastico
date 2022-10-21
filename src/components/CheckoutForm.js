@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { PlasticContext } from "../context/plastics";
 import { CartContext } from "../context/cart";
 
@@ -8,7 +8,7 @@ const CheckoutForm = () => {
   const { checkout } = useContext(PlasticContext);
   const [orderDetails, setOrderDetails] = useState({ cart, total, address: null, token: null });
   const [error, setError] = useState(null);
-  const history = useHistory();
+  const history = useNavigate();
 
   useEffect(() => {
     if (orderDetails.token) {
