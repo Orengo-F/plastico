@@ -1,0 +1,171 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-plastico-prod-212145-authRole",
+      "UnauthRoleArn": "arn:aws:iam::070767776776:role/amplify-plastico-prod-212145-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::070767776776:role/amplify-plastico-prod-212145-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-plastico-prod-212145-deployment",
+      "UnauthRoleName": "amplify-plastico-prod-212145-unauthRole",
+      "StackName": "amplify-plastico-prod-212145",
+      "StackId": "arn:aws:cloudformation:us-east-1:070767776776:stack/amplify-plastico-prod-212145/3cbd56c0-516d-11ed-9b98-0aaad94b78dd",
+      "AmplifyAppId": "d1u37gq7t4fxz5"
+    }
+  },
+  "auth": {
+    "plastico032a53b5": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-plastico-prod-212145-deployment/amplify-cfn-templates/auth/plastico032a53b5-cloudformation-template.json",
+        "logicalId": "authplastico032a53b5"
+      },
+      "lastPushTimeStamp": "2022-10-21T20:19:24.568Z",
+      "output": {
+        "UserPoolId": "us-east-1_EE0XYAAPn",
+        "AppClientIDWeb": "2qjkfohpk2ivufmr3s2m26t8mh",
+        "AppClientID": "dhevet6den1h3hasctac4fr5m",
+        "IdentityPoolId": "us-east-1:458b0eda-4c87-4946-bbad-d6baf57e00e3",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:070767776776:userpool/us-east-1_EE0XYAAPn",
+        "IdentityPoolName": "plastico032a53b5_identitypool_032a53b5__prod",
+        "UserPoolName": "plastico032a53b5_userpool_032a53b5"
+      },
+      "lastPushDirHash": "xaWcGPVwUm7S/mUNbOh3PRhrRI8="
+    }
+  },
+  "storage": {
+    "plasticWasteImage": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "lastPushTimeStamp": "2022-10-21T20:19:24.568Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-plastico-prod-212145-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "logicalId": "storageplasticWasteImage"
+      },
+      "output": {
+        "BucketName": "plasticoebff2d7f699d4572a37f664c0688a62d212145-prod",
+        "Region": "us-east-1"
+      },
+      "lastPushDirHash": "Oh4nIRV1wEiljQJilw+sO8ZvRrY="
+    }
+  },
+  "function": {
+    "processPayment": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [],
+      "lastBuildTimeStamp": "2022-10-21T20:11:19.700Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2022-10-21T20:11:19.947Z",
+      "distZipFilename": "processPayment-4474487745676d505737-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-plastico-prod-212145-deployment",
+        "s3Key": "amplify-builds/processPayment-4474487745676d505737-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-plastico-prod-212145-deployment/amplify-cfn-templates/function/processPayment-cloudformation-template.json",
+        "logicalId": "functionprocessPayment"
+      },
+      "lastPushTimeStamp": "2022-10-21T20:19:24.568Z",
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:070767776776:function:processPayment-prod",
+        "Name": "processPayment-prod",
+        "LambdaExecutionRole": "plasticoLambdaRoledf189f20-prod"
+      },
+      "lastPushDirHash": "J1D4mYaNfsfapWaAXszxBFpKh+E="
+    },
+    "createOrder": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [],
+      "lastBuildTimeStamp": "2022-10-21T20:11:19.726Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2022-10-21T20:11:19.912Z",
+      "distZipFilename": "createOrder-754a6e5a4735566c3045-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-plastico-prod-212145-deployment",
+        "s3Key": "amplify-builds/createOrder-754a6e5a4735566c3045-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-plastico-prod-212145-deployment/amplify-cfn-templates/function/createOrder-cloudformation-template.json",
+        "logicalId": "functioncreateOrder"
+      },
+      "lastPushTimeStamp": "2022-10-21T20:19:24.568Z",
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:070767776776:function:createOrder-prod",
+        "Name": "createOrder-prod",
+        "LambdaExecutionRole": "plasticoLambdaRole2fdce4ae-prod"
+      },
+      "lastPushDirHash": "wBSFyhSalaZNKZ1bp8D+irUWLwY="
+    }
+  },
+  "api": {
+    "plastico": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "plastico032a53b5",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authplastico032a53b5"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "API_KEY",
+              "apiKeyConfig": {
+                "apiKeyExpirationDays": 365,
+                "apiKeyExpirationDate": "2023-10-21T18:38:47.488Z",
+                "description": "Guest user access to plastics"
+              }
+            }
+          ]
+        },
+        "GraphQLAPIIdOutput": "hjimgtonubddfp6trywap5suvm",
+        "GraphQLAPIEndpointOutput": "https://ykb7n6a7szhiznmxrseaqlu25q.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-wlhml2padzghfhwqfkojaoaahu"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-plastico-prod-212145-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiplastico"
+      },
+      "lastPushTimeStamp": "2022-10-21T20:19:24.568Z",
+      "lastPushDirHash": "KotrlNB6qPuTLgwjpq+1qeb6MQc="
+    }
+  }
+}

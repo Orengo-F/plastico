@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "plastico",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authplastico032a53b5",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "S3DeploymentBucket": "amplify-plastico-prod-212145-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/f6684811419534b4040dbcb5b3df2b9890f64517"
+}

@@ -1,0 +1,375 @@
+
+type Plastic @aws_api_key @aws_cognito_user_pools {
+  id: ID!
+  title: String!
+  description: String
+  image: String
+  featured: Boolean
+  price: Float
+  orders(order_id: ModelIDKeyConditionInput, filter: ModelPlasticOrderFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelPlasticOrderConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type PlasticOrder {
+  id: ID!
+  plastic_id: ID!
+  order_id: ID!
+  plastic: Plastic
+  order: Order
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  customer: String
+}
+
+type Order {
+  id: ID!
+  user: String!
+  date: String
+  total: Float
+  plastics(plastic_id: ModelIDKeyConditionInput, filter: ModelPlasticOrderFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelPlasticOrderConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  customer: String
+}
+
+enum OrderStatus {
+  SUCCESS
+  FAILED
+}
+
+input CartItem {
+  id: ID!
+  title: String
+  image: String
+  price: Float
+  amount: Int
+}
+
+input ProcessOrderInput {
+  id: ID!
+  cart: [CartItem]
+  total: Float!
+  address: String
+}
+
+type Mutation {
+  processOrder(input: ProcessOrderInput!): OrderStatus
+  createPlastic(input: CreatePlasticInput!, condition: ModelPlasticConditionInput): Plastic
+  updatePlastic(input: UpdatePlasticInput!, condition: ModelPlasticConditionInput): Plastic
+  deletePlastic(input: DeletePlasticInput!, condition: ModelPlasticConditionInput): Plastic
+  createPlasticOrder(input: CreatePlasticOrderInput!, condition: ModelPlasticOrderConditionInput): PlasticOrder
+  updatePlasticOrder(input: UpdatePlasticOrderInput!, condition: ModelPlasticOrderConditionInput): PlasticOrder
+  deletePlasticOrder(input: DeletePlasticOrderInput!, condition: ModelPlasticOrderConditionInput): PlasticOrder
+  createOrder(input: CreateOrderInput!, condition: ModelOrderConditionInput): Order
+  updateOrder(input: UpdateOrderInput!, condition: ModelOrderConditionInput): Order
+  deleteOrder(input: DeleteOrderInput!, condition: ModelOrderConditionInput): Order
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelPlasticConnection @aws_api_key @aws_cognito_user_pools {
+  items: [Plastic]!
+  nextToken: String
+}
+
+input ModelPlasticFilterInput {
+  id: ModelIDInput
+  title: ModelStringInput
+  description: ModelStringInput
+  image: ModelStringInput
+  featured: ModelBooleanInput
+  price: ModelFloatInput
+  and: [ModelPlasticFilterInput]
+  or: [ModelPlasticFilterInput]
+  not: ModelPlasticFilterInput
+}
+
+type Query {
+  getOrder(id: ID!): Order
+  listOrders(filter: ModelOrderFilterInput, limit: Int, nextToken: String): ModelOrderConnection
+  getPlastic(id: ID!): Plastic @aws_api_key @aws_cognito_user_pools
+  listPlastics(filter: ModelPlasticFilterInput, limit: Int, nextToken: String): ModelPlasticConnection @aws_api_key @aws_cognito_user_pools
+}
+
+input ModelPlasticConditionInput {
+  title: ModelStringInput
+  description: ModelStringInput
+  image: ModelStringInput
+  featured: ModelBooleanInput
+  price: ModelFloatInput
+  and: [ModelPlasticConditionInput]
+  or: [ModelPlasticConditionInput]
+  not: ModelPlasticConditionInput
+}
+
+input CreatePlasticInput {
+  id: ID
+  title: String!
+  description: String
+  image: String
+  featured: Boolean
+  price: Float
+}
+
+input UpdatePlasticInput {
+  id: ID!
+  title: String
+  description: String
+  image: String
+  featured: Boolean
+  price: Float
+}
+
+input DeletePlasticInput {
+  id: ID!
+}
+
+input ModelPlasticOrderConditionInput {
+  plastic_id: ModelIDInput
+  order_id: ModelIDInput
+  and: [ModelPlasticOrderConditionInput]
+  or: [ModelPlasticOrderConditionInput]
+  not: ModelPlasticOrderConditionInput
+}
+
+input CreatePlasticOrderInput {
+  id: ID
+  plastic_id: ID!
+  order_id: ID!
+}
+
+input UpdatePlasticOrderInput {
+  id: ID!
+  plastic_id: ID
+  order_id: ID
+}
+
+input DeletePlasticOrderInput {
+  id: ID!
+}
+
+type ModelOrderConnection {
+  items: [Order]!
+  nextToken: String
+}
+
+input ModelOrderFilterInput {
+  id: ModelIDInput
+  user: ModelStringInput
+  date: ModelStringInput
+  total: ModelFloatInput
+  and: [ModelOrderFilterInput]
+  or: [ModelOrderFilterInput]
+  not: ModelOrderFilterInput
+}
+
+input ModelOrderConditionInput {
+  user: ModelStringInput
+  date: ModelStringInput
+  total: ModelFloatInput
+  and: [ModelOrderConditionInput]
+  or: [ModelOrderConditionInput]
+  not: ModelOrderConditionInput
+}
+
+input CreateOrderInput {
+  id: ID
+  user: String!
+  date: String
+  total: Float
+}
+
+input UpdateOrderInput {
+  id: ID!
+  user: String
+  date: String
+  total: Float
+}
+
+input DeleteOrderInput {
+  id: ID!
+}
+
+input ModelIDKeyConditionInput {
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelStringKeyConditionInput {
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  between: [String]
+  beginsWith: String
+}
+
+type ModelPlasticOrderConnection @aws_api_key @aws_cognito_user_pools {
+  items: [PlasticOrder]!
+  nextToken: String
+}
+
+input ModelPlasticOrderFilterInput {
+  id: ModelIDInput
+  plastic_id: ModelIDInput
+  order_id: ModelIDInput
+  and: [ModelPlasticOrderFilterInput]
+  or: [ModelPlasticOrderFilterInput]
+  not: ModelPlasticOrderFilterInput
+}
+
