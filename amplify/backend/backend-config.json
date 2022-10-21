@@ -1,0 +1,16 @@
+{
+	"auth": {
+		"plasticofeacffb3": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	},
+	"storage": {
+		"plasticWasteImages": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}
