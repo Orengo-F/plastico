@@ -1,6 +1,6 @@
 const { CognitoIdentityServiceProvider } = require("aws-sdk");
 const cognitoIdentityServiceProvider = new CognitoIdentityServiceProvider();
-const USER_POOL_ID = "<userpool_id>";
+const USER_POOL_ID = "us-east-1_EE0XYAAPn";
 
 const getUserEmail = async (event) => {
   const params = {

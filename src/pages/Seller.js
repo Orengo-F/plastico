@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import { API, graphqlOperation, Storage } from "aws-amplify";
-import { Authenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-import { createBook } from '../api/mutations'
+import { Authenticator} from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import { createPlastic } from '../api/mutations'
 import config from '../aws-exports'
 
 const {
@@ -19,7 +20,7 @@ const Seller = () => {
         e.preventDefault();
         try {
             if (!plasticDetails.title || !plasticDetails.price) return
-            await API.graphql(graphqlOperation(createBook, { input: plasticDetails }))
+            await API.graphql(graphqlOperation(createPlastic, { input: plasticDetails }))
             setPlasticDetails({ title: "", description: "", image: "", price: "" })
         } catch (err) {
             console.log('error creating todo:', err)

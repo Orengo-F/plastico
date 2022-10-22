@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { PlasticContext } from "../context/plastics";
 import { CartContext } from "../context/cart";
 
 const CheckoutForm = () => {
-  const { cart, total, clearCart } = useContext(CartContext);
+  const { cart, total } = useContext(CartContext);
   const { checkout } = useContext(PlasticContext);
   const [orderDetails, setOrderDetails] = useState({ cart, total, address: null, token: null });
   const [error, setError] = useState(null);
-  const history = useNavigate();
+  //const history = useNavigate();
 
   useEffect(() => {
     if (orderDetails.token) {

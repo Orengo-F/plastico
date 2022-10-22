@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet} from 'react-router-dom';
 
 const Header = () => {
     return (
+        <>
         <header className="main-head">
             <nav>
                 <h1 id="logo">PlastiCo</h1>
@@ -22,6 +23,8 @@ const Header = () => {
                 </ul>
             </nav>
         </header>
+         <Outlet/>
+        </>
     )
 }
 

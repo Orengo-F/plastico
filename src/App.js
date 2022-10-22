@@ -24,14 +24,15 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={< Header />}/>
-      <Route index element={<Home/>} />
-      <Route path="cart" element={<Cart />}/>
-      <Route path="checkout" element={< Checkout />}/>
-      <Route path="plastic" element={<Plastics />}/>
-      <Route path="books/:id" children={<PlasticDetails></PlasticDetails>}/>
-      <Route path="admin" element={ <Admin />}/>
-      <Route path="*" element={ <Error />}/>
+        <Route path="/" element={<Header />}>
+          <Route index element={<Home />} />
+          <Route path="plastic" element={<Plastics />} />
+          <Route path="plastic/:id" element={<PlasticDetails />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="admin" element={<Admin />} />
+          <Route path="*" element={<Error />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
