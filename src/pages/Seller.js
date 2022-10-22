@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
-import { API, graphqlOperation, Storage } from "aws-amplify";
-import { Authenticator} from '@aws-amplify/ui-react';
+import { API, graphqlOperation, Storage, Amplify, Auth } from "aws-amplify";
+import { withAuthenticator} from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { createPlastic } from '../api/mutations'
 import config from '../aws-exports'
+
+
+Amplify.configure(config);
 
 const {
     aws_user_files_s3_bucket_region: region,
@@ -12,7 +15,7 @@ const {
 } = config
 
 
-const Seller = () => {
+const Seller = (signOut, user) => {
     const [image, setImage] = useState(null);
     const [plasticDetails, setPlasticDetails] = useState({ title: "", description: "", image: "", price: "" });
 
@@ -51,12 +54,10 @@ const Seller = () => {
 
     return (
         <section className="admin-wrapper">
-            <Authenticator>
-            {({ signOut, user }) => (
                 <section>
                     <header className="form-header">
                         <h3>Add New Plastic</h3>
-                        
+                            <button onClick={signOut}>Sign out</button>
                     </header>
                     <form className="form-wrapper" onSubmit={handleSubmit}>
                         <div className="form-image">
@@ -114,10 +115,8 @@ const Seller = () => {
                         </div>
                     </form>
                 </section>
-            )}
-            </Authenticator>
         </section>
     )
 }
 
-export default Seller
+export default withAuthenticator(Seller)

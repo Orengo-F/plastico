@@ -212,6 +212,10 @@ nav ul {
   text-align: center;
 }
 
+.button-sign-out{
+  width: 100px;
+}
+
 .form-header {
   display: flex;
   align-items: center;

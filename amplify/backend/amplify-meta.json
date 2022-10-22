@@ -66,7 +66,7 @@
                 "IdentityPoolName": "plastico032a53b5_identitypool_032a53b5__prod",
                 "UserPoolName": "plastico032a53b5_userpool_032a53b5"
             },
-            "lastPushTimeStamp": "2022-10-22T08:12:42.253Z",
+            "lastPushTimeStamp": "2022-10-22T11:02:40.628Z",
             "providerMetadata": {
                 "s3TemplateURL": "https://s3.amazonaws.com/amplify-plastico-prod-212145-deployment/amplify-cfn-templates/auth/plastico032a53b5-cloudformation-template.json",
                 "logicalId": "authplastico032a53b5"
@@ -82,7 +82,7 @@
                 "BucketName": "plasticoebff2d7f699d4572a37f664c0688a62d212145-prod",
                 "Region": "us-east-1"
             },
-            "lastPushTimeStamp": "2022-10-22T08:12:42.255Z",
+            "lastPushTimeStamp": "2022-10-22T11:02:40.629Z",
             "providerMetadata": {
                 "s3TemplateURL": "https://s3.amazonaws.com/amplify-plastico-prod-212145-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
                 "logicalId": "storageplasticWasteImage"
@@ -101,13 +101,13 @@
                 "Name": "processPayment-prod",
                 "LambdaExecutionRole": "plasticoLambdaRoledf189f20-prod"
             },
-            "lastPushTimeStamp": "2022-10-22T08:13:07.690Z",
+            "lastPushTimeStamp": "2022-10-22T11:03:35.938Z",
             "providerMetadata": {
                 "s3TemplateURL": "https://s3.amazonaws.com/amplify-plastico-prod-212145-deployment/amplify-cfn-templates/function/processPayment-cloudformation-template.json",
                 "logicalId": "functionprocessPayment"
             },
-            "lastBuildTimeStamp": "2022-10-22T08:12:56.022Z",
-            "lastPackageTimeStamp": "2022-10-22T08:12:56.255Z",
+            "lastBuildTimeStamp": "2022-10-22T11:03:29.870Z",
+            "lastPackageTimeStamp": "2022-10-22T11:03:30.097Z",
             "distZipFilename": "processPayment-53416c303035412f3943-build.zip"
         },
         "createOrder": {
@@ -121,13 +121,13 @@
                 "Name": "createOrder-prod",
                 "LambdaExecutionRole": "plasticoLambdaRole2fdce4ae-prod"
             },
-            "lastPushTimeStamp": "2022-10-22T08:13:07.687Z",
+            "lastPushTimeStamp": "2022-10-22T11:03:35.952Z",
             "providerMetadata": {
                 "s3TemplateURL": "https://s3.amazonaws.com/amplify-plastico-prod-212145-deployment/amplify-cfn-templates/function/createOrder-cloudformation-template.json",
                 "logicalId": "functioncreateOrder"
             },
-            "lastBuildTimeStamp": "2022-10-22T08:12:56.027Z",
-            "lastPackageTimeStamp": "2022-10-22T08:12:56.278Z",
+            "lastBuildTimeStamp": "2022-10-22T11:03:29.879Z",
+            "lastPackageTimeStamp": "2022-10-22T11:03:30.117Z",
             "distZipFilename": "createOrder-6849387337476853534e-build.zip"
         }
     },
@@ -167,11 +167,22 @@
                 "GraphQLAPIEndpointOutput": "https://ykb7n6a7szhiznmxrseaqlu25q.appsync-api.us-east-1.amazonaws.com/graphql",
                 "GraphQLAPIKeyOutput": "da2-wlhml2padzghfhwqfkojaoaahu"
             },
-            "lastPushTimeStamp": "2022-10-22T08:12:42.258Z",
+            "lastPushTimeStamp": "2022-10-22T11:02:40.633Z",
             "providerMetadata": {
                 "s3TemplateURL": "https://s3.amazonaws.com/amplify-plastico-prod-212145-deployment/amplify-cfn-templates/api/cloudformation-template.json",
                 "logicalId": "apiplastico"
             }
+        }
+    },
+    "hosting": {
+        "S3AndCloudFront": {
+            "service": "S3AndCloudFront",
+            "providerPlugin": "awscloudformation",
+            "providerMetadata": {
+                "s3TemplateURL": "https://s3.amazonaws.com/amplify-plastico-prod-212145-deployment/amplify-cfn-templates/hosting/template.json",
+                "logicalId": "hostingS3AndCloudFront"
+            },
+            "lastPushTimeStamp": "2022-10-22T11:03:36.182Z"
         }
     }
 }
