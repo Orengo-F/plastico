@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { v4 as uuidv4 } from "uuid";
 import { listPlastics } from "../api/queries";
 import { processOrder } from "../api/mutations";
 
-const PlasticContext = React.createContext();
+const PlasticContext = createContext();
 
 const PlasticProvider = ({ children }) => {
   const [plastics, setPlastics] = useState([]);

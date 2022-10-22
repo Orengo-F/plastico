@@ -22,7 +22,7 @@ const Home = () => {
                             <div className="book-image">
                                 <img src={image} alt={title} />
                             </div>
-                            <Link to={`plastics/${id}`} className="btn book-link">details</Link>
+                            <Link to={`plastic/${id}`} className="btn book-link">details</Link>
                         </article>
                     ))}
                 </div>
